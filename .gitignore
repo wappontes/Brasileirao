@@ -1,0 +1,16 @@
+# Ambiente e cache
+.venv/
+__pycache__/
+*.pyc
+
+# Banco gerado pelo pipeline
+*.duckdb
+*.duckdb.wal
+
+# Dados: fora do repositório até a licença ser confirmada
+raw/
+dados/
+
+# Arquivos do editor
+.vscode/
+.idea/
