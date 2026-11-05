@@ -8,7 +8,9 @@ Pipeline de dados em Python sobre o histórico do Campeonato Brasileiro de Futeb
 
 Os dados vêm do repositório [adaoduque/Brasileirao_Dataset](https://github.com/adaoduque/Brasileirao_Dataset), de autoria de adaoduque.
 
-**Licença:** não confirmada. Por isso, os CSVs não estão neste repositório.
+**Fonte no Kaggle:** [Campeonato Brasileiro de Futebol](https://www.kaggle.com/datasets/adaoduque/campeonato-brasileiro-de-futebol), de adaoduque.
+
+**Licença:** [GPL 2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html). Os arquivos CSV não estão neste repositório; baixe-os da fonte acima.
 
 ## Como obter os CSVs
 
@@ -95,4 +97,9 @@ raw/            CSVs de origem (não versionados)
 
 ## Uso de IA
 
-*Seção a preencher ao final do projeto: em quais etapas a IA errou ou fez algo que não foi pedido, e como isso foi descoberto.*
+Na ingestão, a função gravar no db.py usou .fetchone(), que deixava a conexão ocupada e quebrava a segunda tabela. 
+
+Descoberto quando a ingestão falhou na segunda tabela.
+O redirecionamento de sys.stdout dentro do main() quebrava o pytest, que não conseguia restaurar o stdout. Descoberto quando os testes deram ValueError: I/O operation on closed file.
+
+A spec da transformação dizia que posse era nula só de 2003 a 2013, mas a medição mostrou 2024 inteiro e partidas de outros anos também vazias.
