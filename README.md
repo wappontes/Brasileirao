@@ -85,6 +85,23 @@ Estes pontos estão medidos nos arquivos. Antes de usar os indicadores, leia a l
 - **Partida 1114** (24/04/2005, Brasiliense 0 x 1 Vasco): na fonte, `vencedor` é `-`, que significa empate, mas o placar dá vitória do Vasco. O campo `resultado` em `refined.partidas` segue o placar. O valor original fica em `vencedor_original`.
 - **Minuto com acréscimo:** valores como `90+2` são separados em duas colunas: `minuto` e `acrescimo`.
 
+## Dashboard
+
+```bash
+uv run streamlit run app.py
+```
+
+Abre em `http://localhost:8501`. Exibe classificação, histórico de gols, vantagem do mandante, cartões e posse de bola por temporada.
+
+### Escudos dos clubes
+
+Os escudos exibidos na tabela de classificação vêm de duas fontes:
+
+- **Sprites SVG** do repositório [hugomiura/escudos-times-brasil-svg](https://github.com/hugomiura/escudos-times-brasil-svg) (Série A e Série B), armazenados em `assets/`.
+- **Logos individuais** obtidos do [Wikimedia Commons](https://commons.wikimedia.org/), armazenados em `assets/logos/`.
+
+Os escudos são marcas registradas de seus respectivos clubes. O uso aqui é exclusivamente educacional e não comercial, como parte de um projeto de curso.
+
 ## Estrutura do projeto
 
 ```
@@ -93,6 +110,7 @@ sql/marts/      consultas SQL dos indicadores
 specs/          especificações de cada camada, com decisões e critérios de aceite
 test/           testes automatizados com pytest
 raw/            CSVs de origem (não versionados)
+assets/         sprites SVG e logos dos clubes
 ```
 
 ## Uso de IA
