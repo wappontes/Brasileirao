@@ -1,4 +1,4 @@
-"""
+﻿"""
 Ingestão: CSV -> schema raw do brasileirao.duckdb.
 
 Spec: specs/Spec da Ingestão (camda raw).md
@@ -18,7 +18,7 @@ import pandas as pd
 from pipeline import db
 
 # O terminal do Windows não fala UTF-8 por padrão.
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", line_buffering=True)
+
 
 MAPA = {
     "campeonato-brasileiro-full.csv": "partidas",
@@ -81,6 +81,7 @@ def formatar(n: int) -> str:
 
 
 def main() -> None:
+    sys.stdout.reconfigure(encoding="utf-8")
     verificar_arquivos()
 
     # Lê tudo antes de abrir o banco: se um arquivo falhar, nada é gravado.

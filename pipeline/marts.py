@@ -1,4 +1,4 @@
-"""
+﻿"""
 Executor de marts: sql/marts/*.sql -> schema marts do brasileirao.duckdb.
 
 - Lê todos os arquivos sql/marts/NN_*.sql em ordem alfabética.
@@ -15,7 +15,7 @@ import duckdb
 
 from pipeline import db
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", line_buffering=True)
+
 
 PASTA_SQL = db.RAIZ / "sql" / "marts"
 
@@ -49,6 +49,7 @@ def fmt(n: int) -> str:
 
 
 def main() -> None:
+    sys.stdout.reconfigure(encoding="utf-8")
     arquivos = verificar_pasta()
 
     con = db.conectar()

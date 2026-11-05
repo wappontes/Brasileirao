@@ -18,7 +18,7 @@ import duckdb
 
 from pipeline import db
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", line_buffering=True)
+
 
 ESPERADO = {"partidas": 8785, "estatisticas": 17570, "gols": 9861, "cartoes": 20953}
 
@@ -209,6 +209,7 @@ def imprimir_resumo(con) -> None:
 
 
 def main() -> None:
+    sys.stdout.reconfigure(encoding="utf-8")
     con = db.conectar()
     try:
         db.criar_schema(con, "refined")
