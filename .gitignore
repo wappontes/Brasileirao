@@ -3,8 +3,7 @@
 __pycache__/
 *.pyc
 
-# Banco gerado pelo pipeline
-*.duckdb
+# WAL temporário do DuckDB (nunca commitar)
 *.duckdb.wal
 
 # Dados: fora do repositório até a licença ser confirmada
