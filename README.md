@@ -87,11 +87,30 @@ Estes pontos estão medidos nos arquivos. Antes de usar os indicadores, leia a l
 
 ## Dashboard
 
+O dashboard foi feito em três versões com layouts diferentes, todas lendo a mesma base de dados (`brasileirao.duckdb`). Antes de abrir qualquer uma, rode o pipeline até o fim para o banco existir.
+
+| Versão | Arquivo | Layout | Acesso online |
+|---|---|---|---|
+| 1 | `app.py` | Barra lateral com filtros e seções em sequência | [projeto-brasileirao-analytics.streamlit.app](https://projeto-brasileirao-analytics.streamlit.app/) |
+| 2 | `app_v2.py` | Coluna principal com painel lateral à direita e abas | [projeto-brasileirao-analytics-v2.streamlit.app](https://projeto-brasileirao-analytics-v2.streamlit.app/) |
+| 3 | `app_v3.py` | Coluna principal mais estreita, painel à direita e quatro abas | [projeto-brasileirao-analytics-v3.streamlit.app](https://projeto-brasileirao-analytics-v3.streamlit.app/) |
+
+Para rodar uma versão localmente, use o comando do arquivo desejado:
+
 ```bash
 uv run streamlit run app.py
+uv run streamlit run app_v2.py
+uv run streamlit run app_v3.py
 ```
 
-Abre em `http://localhost:8501`. Exibe classificação, histórico de gols, vantagem do mandante, cartões e posse de bola por temporada.
+Cada um abre em `http://localhost:8501`. Para rodar duas ou três versões ao mesmo tempo, indique outra porta em cada uma:
+
+```bash
+uv run streamlit run app_v2.py --server.port 8502
+uv run streamlit run app_v3.py --server.port 8503
+```
+
+Os três exibem classificação, histórico de gols, vantagem do mandante, cartões e posse de bola por temporada.
 
 ### Escudos dos clubes
 
