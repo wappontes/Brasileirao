@@ -307,11 +307,12 @@ if _SVG_SPRITE:
 # ── conexão ao banco ──────────────────────────────────────────────────────────
 @st.cache_resource
 def get_con() -> duckdb.DuckDBPyConnection:
-    db_path = str(Path(__file__).parent / "brasileirao.duckdb")
-    con = duckdb.connect()
-    con.execute(f"ATTACH '{db_path}' AS brasileirao (READ_ONLY)")
-    con.execute("USE brasileirao")
-    return con
+    import shutil, tempfile
+    src = Path(__file__).parent / "brasileirao.duckdb"
+    tmp = Path(tempfile.gettempdir()) / "brasileirao_app.duckdb"
+    if not tmp.exists():
+        shutil.copy2(src, tmp)
+    return duckdb.connect(str(tmp), read_only=True)
 
 
 @st.cache_data

@@ -1,0 +1,3 @@
+# Tratar arquivos DuckDB como binários (evitar corrupção por CRLF)
+*.duckdb binary
+*.duckdb.wal binary
