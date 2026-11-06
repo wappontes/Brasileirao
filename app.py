@@ -13,7 +13,6 @@ import duckdb
 import plotly.graph_objects as go
 import streamlit as st
 
-from pipeline import db
 
 # ── escudos SVG ───────────────────────────────────────────────────────────────
 _ASSETS = Path(__file__).parent / "assets"
@@ -308,7 +307,8 @@ if _SVG_SPRITE:
 # ── conexão ao banco ──────────────────────────────────────────────────────────
 @st.cache_resource
 def get_con() -> duckdb.DuckDBPyConnection:
-    return db.conectar()
+    db_path = Path(__file__).parent / "brasileirao.duckdb"
+    return duckdb.connect(str(db_path), read_only=True)
 
 
 @st.cache_data
